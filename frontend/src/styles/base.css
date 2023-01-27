@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+}
+
+@media (min-width: 576px) {
+    .h-sm-100 {
+        height: 100%;
+    }
+}
+
+.nav-link span,
+.nav-link i {
+    color: white;
+}
+
+@media (max-width: 575px) {
+    .sticky-top {
+        max-height: 10vh;
+    }
+}

@@ -1,0 +1,11 @@
+@media (max-width: 575px) {
+    #div-menu-toogle-sep {
+        width: 0 !important;
+    }
+    #dropdown-user .dropdown-toggle::after {
+        transform: rotate(180deg);
+    }
+    #dropdown-user {
+        width: auto !important;
+    }
+}
