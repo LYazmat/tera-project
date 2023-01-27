@@ -14,5 +14,5 @@ Create a SPA application as a plataform to offer courses. Users can:
 - Favorite the ones they like most
 
 ```
-For both, backend and frontend, you can find the initial configuration on each file README.md
+For both, backend and frontend, you can find the initial configuration on each README.md file
 ```
