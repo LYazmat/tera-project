@@ -22,15 +22,9 @@ from django.conf import settings
 
 from backend.settings import MEDIA_ROOT
 
-from rest_framework.routers import DefaultRouter
-# from course.views import UserViewSet
-
-router = DefaultRouter()
-# router.register('user', UserViewSet, basename='UserModel')
-
 urlpatterns = [
     path('', RedirectView.as_view(url='admin/', permanent=True)),
     path('admin/', admin.site.urls),
-    path('course/', include('course.urls')),
+    path('course/', include('course_api.urls')),
     path('auth/', include('auth_api.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

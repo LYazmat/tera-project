@@ -1,4 +1,4 @@
-from course.views import CourseViewSet
+from .views import CourseViewSet
 
 from rest_framework.routers import DefaultRouter
 

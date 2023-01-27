@@ -20,4 +20,4 @@ class CourseViewSet(viewsets.ModelViewSet):
         if search:
             queryset = queryset.filter(reduce(lambda x, y: x & y, [Q(
                 title__icontains=word) for word in search.split(' ')]))
-        return queryset.prefetch_related('areas')
+        return queryset.prefetch_related('tags')

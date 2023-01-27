@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import Course, Tag
-from django.contrib.auth.models import User
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -17,4 +16,3 @@ class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
         fields = '__all__'
-
