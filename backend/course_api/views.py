@@ -1,17 +1,27 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, mixins
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from .serializers import CourseSerializer
 from .models import Course
 from django.db.models import Q
-from django.contrib.auth.models import User
-from django.contrib.auth.hashers import make_password, check_password
 
 from functools import reduce
+
+'''    
+    viewsets.ModelViewSet = mixins.CreateModelMixin, 
+                            mixins.RetrieveModelMixin, 
+                            mixins.UpdateModelMixin,
+                            mixins.DestroyModelMixin,
+                            mixins.ListModelMixin,
+                            GenericViewSet
+'''
 
 
 class CourseViewSet(viewsets.ModelViewSet):
 
     serializer_class = CourseSerializer
+    permission_classes = (AllowAny,)
+    http_method_names = ['get', 'head']
 
     def get_queryset(self):
         # reduce(lambda x, y: x | y, [Q(name__icontains=word) for word in list]))
