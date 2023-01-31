@@ -15,7 +15,7 @@ import {
   Modal,
 } from "react-bootstrap";
 
-export default function Configuracoes() {
+export default function Configs() {
   const [show, setShow] = React.useState(false);
 
   const handleClose = () => setShow(false);

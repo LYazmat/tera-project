@@ -9,7 +9,7 @@ from rest_framework import generics, status
 from auth_api.serializer import MyTokenObtainPairSerializer, RegisterSerializer
 
 from rest_framework_simplejwt.views import TokenObtainPairView
-
+from rest_framework_simplejwt.tokens import RefreshToken
 
 # Create your views here.
 

@@ -11,8 +11,8 @@ import {
   Alert,
 } from "react-bootstrap";
 
-async function createUser(credentials) {
-  return fetch("http://localhost:8080/users/create", {
+async function register(credentials) {
+  return fetch("http://localhost:8000/auth/register/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -21,22 +21,20 @@ async function createUser(credentials) {
   }).then((data) => data.json());
 }
 
-export default function CreateUser() {
-  /*const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [passwordConfirm, setPasswordConfirm] = useState();*/
+export default function Register() {
   const [alert, setAlert] = useState(false);
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
+    setCredentials((values) => ({ ...values, [name]: value }));
   };
 
-  const [inputs, setInputs] = useState({
+  const [credentials, setCredentials] = useState({
+    username: "",
     email: "",
     password: "",
-    confirmpassword: "",
+    password2: "",
   });
 
   const navigate = useNavigate();
@@ -44,10 +42,10 @@ export default function CreateUser() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (inputs.password === inputs.confirmpassword) {
-      const token = await createUser(inputs);
+    if (credentials.password === credentials.password2) {
+      const token = await register(credentials);
       console.log(token);
-      !!token?.token && navigate("/perfil");
+      !!token?.token && navigate("/profile");
     } else {
       setAlert(<Alert variant="danger">Deu ruim!</Alert>);
     }
@@ -76,6 +74,18 @@ export default function CreateUser() {
                   ></Form.Control>
                 </InputGroup>
                 <InputGroup className="mb-3 input-group-sm">
+                  <InputGroup.Text>&nbsp;&nbsp;&nbsp;Usuário</InputGroup.Text>
+                  <Form.Control
+                    required
+                    type="text"
+                    name="username"
+                    id="username"
+                    placeholder="Nome de usuário"
+                    aria-label="Nome de usuário"
+                    onChange={handleChange}
+                  ></Form.Control>
+                </InputGroup>
+                <InputGroup className="mb-3 input-group-sm">
                   <InputGroup.Text>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Senha
                   </InputGroup.Text>
@@ -94,8 +104,8 @@ export default function CreateUser() {
                   <Form.Control
                     required
                     type="password"
-                    id="confirmpassword"
-                    name="confirmpassword"
+                    id="password2"
+                    name="password2"
                     placeholder="Confirme a senha"
                     aria-label="Confirme a senha"
                     onChange={handleChange}

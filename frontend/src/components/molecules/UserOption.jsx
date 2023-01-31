@@ -25,7 +25,7 @@ export default function UserOption() {
         <Dropdown.Item as={Link} to="/config">
           Configurações
         </Dropdown.Item>
-        <Dropdown.Item as={Link} to="/perfil">
+        <Dropdown.Item as={Link} to="/profile">
           Perfil
         </Dropdown.Item>
         <Dropdown.Divider className="bg-secondary" />

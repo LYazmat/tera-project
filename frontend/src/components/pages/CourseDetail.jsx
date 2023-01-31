@@ -9,8 +9,8 @@ import blank from "../assets/blank.png";
 import "../../styles/cursoapresentacao.css";
 
 async function getCurso(id) {
-  return fetch(`https://marcustera.pythonanywhere.com/curso/${id}`).then(
-    (data) => data.json()
+  return fetch(`http://localhost:8000/course/${id}`).then((data) =>
+    data.json()
   );
 }
 
@@ -25,7 +25,7 @@ $.get(`https://marcustera.pythonanywhere.com/curso/${id}`, function (data) {
 });
 */
 
-export default function CursoApresentacao(props) {
+export default function CourseDetail(props) {
   const { id } = useParams();
   const [curso, setCurso] = React.useState();
 

@@ -1,26 +1,26 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Login from "./components/pages/Login";
-import CreateUser from "./components/pages/CreateUser";
-import Perfil from "./components/pages/Perfil";
-import Configuracoes from "./components/pages/Configuracoes";
-import Cursos from "./components/pages/Cursos";
-import CursoApresentacao from "./components/pages/CursoApresentacao";
+import Register from "./components/pages/Register";
+import Profile from "./components/pages/Profile";
+import Configs from "./components/pages/Configs";
+import Courses from "./components/pages/Courses";
+import CourseDetail from "./components/pages/CourseDetail";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Cursos pages */}
-        <Route path="/" element={<Cursos />} />
-        <Route path="/curso/apresentacao/:id" element={<CursoApresentacao />} />         
+        {/* Courses routes */}
+        <Route path="/" element={<Courses />} />
+        <Route path="/course/:id" element={<CourseDetail />} />         
         
-        {/* Client create/edit rotes */}
-        <Route path="/create/user/" element={<CreateUser />} />
-        <Route path="/perfil" element={<Perfil />} />
-        <Route path="/config" element={<Configuracoes />} />
+        {/* Profile and Configs routes */}
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/config" element={<Configs />} />
 
-        {/* Client auth route */}
+        {/* Auth auth route */}        
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>

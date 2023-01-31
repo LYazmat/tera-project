@@ -18,7 +18,7 @@ import {
   locationFields,
   personalFields,
   socialFields,
-} from "./fields/fieldsPerfil";
+} from "./fields/fieldsProfile";
 
 /** Call CEP API */
 async function cepAPI(cep) {
@@ -29,7 +29,7 @@ async function cepAPI(cep) {
     });
 }
 
-export default function Perfil() {
+export default function Profile() {
   const [info, setInfo] = useState({
     id: "",
     firstname: "",

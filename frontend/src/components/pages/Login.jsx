@@ -13,7 +13,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 
 async function loginUser(credentials) {
-  return fetch("http://localhost:8080/users/login", {
+  return fetch("http://localhost:8000/auth/token/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -23,7 +23,7 @@ async function loginUser(credentials) {
 }
 
 export default function Login() {
-  const [email, setEmail] = useState();
+  const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [login, setLogin] = useState(true);
 
@@ -32,12 +32,12 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = await loginUser({
-      email,
+      username,
       password,
     });
-    console.log(token?.message);
-    console.log(token?.token);
-    !!token.token ? navigate("/") : setLogin(false);
+    console.log(token?.access);
+    console.log(token?.refresh);
+    !!token.access ? navigate("/") : setLogin(false);
   };
 
   return (
@@ -49,13 +49,13 @@ export default function Login() {
               <h4 className="text-center py-3">LOGIN</h4>
               <Form onSubmit={handleSubmit}>
                 <InputGroup className="mb-3 input-group-sm">
-                  <InputGroup.Text>&nbsp;&nbsp;&nbsp;Email</InputGroup.Text>
+                  <InputGroup.Text>Usuário</InputGroup.Text>
                   <Form.Control
-                    type="email"
+                    type="text"
                     id="username"
-                    placeholder="Informe seu email"
-                    aria-label="Email de usuário"
-                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Informe seu nome de usuário"
+                    aria-label="Nome de usuário"
+                    onChange={(e) => setUsername(e.target.value)}
                   ></Form.Control>
                 </InputGroup>
                 <InputGroup className="mb-3 input-group-sm">
@@ -84,7 +84,7 @@ export default function Login() {
           <div className="small text-end p-1">
             <span>
               Novo usuário?{" "}
-              <Link className="text-decoration-none" to="/create/user">
+              <Link className="text-decoration-none" to="/register">
                 Cadastre aqui
               </Link>
               .

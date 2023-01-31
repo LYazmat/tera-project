@@ -1,33 +1,31 @@
 import React from "react";
 
 import Default from "../templates/Default";
-import Curso from "../organisms/Curso";
-import CursoPagination from "../organisms/CursoPagination";
+import Course from "../organisms/Course";
+import CursoPagination from "../organisms/CoursePagination";
 
 import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
 
 async function getCursos(description) {
-  return fetch(
-    `https://marcustera.pythonanywhere.com/curso/?descricao=${description}`
-  )
+  return fetch(`http://localhost:8000/course/?description=${description}`)
     .then((data) => data.json())
     .catch({
       msg: "Não foi possível realizar a busca.",
     });
 }
 
-export default function CursoIn() {
+export default function Courses() {
   const [description, setDescription] = React.useState("");
-  const [cursos, setCursos] = React.useState([]);
+  const [courses, setCourses] = React.useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setCursos(await getCursos(description));
+    setCourses(await getCursos(description));
   };
 
   React.useEffect(() => {
     const fetchData = async () => {
-      setCursos(await getCursos(""));
+      setCourses(await getCursos(""));
     };
     fetchData().catch(console.error);
   }, []);
@@ -53,8 +51,8 @@ export default function CursoIn() {
           </Form>
         </Col>
         <Row id="content" className="overflow-auto mx-auto">
-          {cursos.map((curso, i) => {
-            return <Curso key={curso.id} curso={curso} />;
+          {courses.map((course, i) => {
+            return <Course key={course.id} course={course} />;
           })}
         </Row>
       </Row>
