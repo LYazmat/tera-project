@@ -1,43 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Default from "../templates/Default";
-import {
-  Row,
-  Col,
-  Card,
-  Button,
-  Form,
-  InputGroup,
-  Alert,
-} from "react-bootstrap";
+import { Row, Col, Card, Button, Form, InputGroup } from "react-bootstrap";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-async function loginUser(credentials) {
-  return fetch("http://localhost:8000/auth/token/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  }).then((data) => data.json());
-}
+import AuthContext from "../../context/AuthContext";
 
 export default function Login() {
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
-  const [login, setLogin] = useState(true);
+  const { loginUser } = useContext(AuthContext);
 
-  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const token = await loginUser({
-      username,
-      password,
-    });
-    console.log(token?.access);
-    console.log(token?.refresh);
-    !!token.access ? navigate("/") : setLogin(false);
+    username.length > 0 && loginUser(username, password);
   };
 
   return (
@@ -68,11 +45,6 @@ export default function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                   ></Form.Control>
                 </InputGroup>
-                {!login && (
-                  <Alert variant="danger" id="login-error">
-                    Usuário ou senha incorreto(s)
-                  </Alert>
-                )}
                 <div className="text-end">
                   <Button type="submit" variant="success" id="btn-login">
                     Entrar
