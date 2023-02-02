@@ -1,10 +1,14 @@
 import { Dropdown } from "react-bootstrap";
 import Avatar from "../atoms/Avatar";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 
 import "../../styles/userOption.css";
 
+import AuthContext from "../../context/AuthContext";
+
 export default function UserOption() {
+  const { logoutUser } = useContext(AuthContext);
   return (
     <Dropdown
       className="py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1 w-100"
@@ -29,9 +33,7 @@ export default function UserOption() {
           Perfil
         </Dropdown.Item>
         <Dropdown.Divider className="bg-secondary" />
-        <Dropdown.Item as={Link} to="/login">
-          Sair
-        </Dropdown.Item>
+        <Dropdown.Item onClick={logoutUser}>Sair</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );

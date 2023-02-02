@@ -1,0 +1,176 @@
+[
+  {
+    "model": "course_api.tag",
+    "pk": 1,
+    "fields": {
+      "title": "Informática",
+      "create_at": "2022-08-09T18:25:46.118Z",
+      "modified_at": "2022-08-09T18:25:46.118Z"
+    }
+  },
+  {
+    "model": "course_api.tag",
+    "pk": 2,
+    "fields": {
+      "title": "Tecnologia",
+      "create_at": "2022-08-09T19:06:38.319Z",
+      "modified_at": "2022-08-09T19:06:38.319Z"
+    }
+  },
+  {
+    "model": "course_api.tag",
+    "pk": 3,
+    "fields": {
+      "title": "Música",
+      "create_at": "2022-08-10T16:35:53.425Z",
+      "modified_at": "2022-08-10T16:35:53.425Z"
+    }
+  },
+  {
+    "model": "course_api.tag",
+    "pk": 4,
+    "fields": {
+      "title": "Negócios",
+      "create_at": "2022-08-10T16:36:01.926Z",
+      "modified_at": "2022-08-10T16:36:01.926Z"
+    }
+  },
+  {
+    "model": "course_api.tag",
+    "pk": 5,
+    "fields": {
+      "title": "Finanças",
+      "create_at": "2022-08-10T16:36:08.242Z",
+      "modified_at": "2022-08-10T16:36:08.242Z"
+    }
+  },
+  {
+    "model": "course_api.tag",
+    "pk": 6,
+    "fields": {
+      "title": "Software",
+      "create_at": "2022-08-10T16:36:20.040Z",
+      "modified_at": "2022-08-10T16:36:20.040Z"
+    }
+  },
+  {
+    "model": "course_api.tag",
+    "pk": 7,
+    "fields": {
+      "title": "Hardware",
+      "create_at": "2022-08-10T16:36:27.109Z",
+      "modified_at": "2022-08-10T16:36:27.109Z"
+    }
+  },
+  {
+    "model": "course_api.tag",
+    "pk": 8,
+    "fields": {
+      "title": "Produtividade",
+      "create_at": "2022-08-10T16:36:38.145Z",
+      "modified_at": "2022-08-10T16:36:38.145Z"
+    }
+  },
+  {
+    "model": "course_api.tag",
+    "pk": 9,
+    "fields": {
+      "title": "Marketing",
+      "create_at": "2022-08-10T16:36:56.824Z",
+      "modified_at": "2022-08-10T16:36:56.824Z"
+    }
+  },
+  {
+    "model": "course_api.tag",
+    "pk": 10,
+    "fields": {
+      "title": "Saúde",
+      "create_at": "2022-08-10T16:37:02.990Z",
+      "modified_at": "2022-08-10T16:37:02.990Z"
+    }
+  },
+  {
+    "model": "course_api.course",
+    "pk": "0bf67e18-ff10-439d-ac8b-793f9c6cb739",
+    "fields": {
+      "title": "Curso de GraphQL e Apollo Server + Apollo Client",
+      "description": "Com o GraphQL e Apollo Server + Apollo Client, você pode criar os servidores de back-end das suas aplicações (mobile ou web), mesmo que já tenha configurado alguma API REST, ou que tenha seus dados diretamente em uma base de dados qualquer. O Apollo Server será usado no back-end e o Apollo Client no front-end.\r\n\r\nCaso tenha dúvidas sobre back-end e front-end:\r\n\r\nBack-end é o nosso servidor. Onde salvamos informações em bases de dados, respondemos por requisições, geramos tokens de autenticação para logar o usuário e mais. Geralmente, essa é a parte que o usuário da sua aplicação não vê, mas interage com ela através do front-end. Aqui que mora o Apollo Server.\r\n\r\nFront-end é a parte que o usuário vê e usa para interagir com o nosso back-end. Poderia ser uma aplicação mobile, um site ou até um terminal. Contando que ele consiga enviar requisições para o nosso servidor, então podemos considerar essa aplicação um front-end. Vamos utilizar o React e o Apollo Client para o nosso front-end.",
+      "image": "0bf67e18-ff10-439d-ac8b-793f9c6cb739-4006520_f99f.jpg",
+      "create_at": "2022-08-11T20:09:25.053Z",
+      "modified_at": "2022-08-11T20:09:25.053Z",
+      "tags": [8, 6, 2]
+    }
+  },
+  {
+    "model": "course_api.course",
+    "pk": "2d0a3a1b-e6dd-4aea-9f86-36440712ee9d",
+    "fields": {
+      "title": "Pixel Art para games de forma descomplicada",
+      "description": "Boa parte dos gamers que cresceu jogando clássicos de Atari ou Super Nintendo, sempre acaba sentindo aquela nostalgia quando se depara com jogos com gráficos em Pixel Art.\r\n\r\nEmbora pareça algo totalmente retrô, a verdade é que esse estilo de arte continua tendo muitos fãs em todas as partes do mundo. O estilo agrada não só a galera \"old school\" como também caiu no gosto dos mais jovens.\r\n\r\nAtualmente consolidado entre diversos outros estilos, a Pixel Art está presente em lançamentos de grandes estúdios e de desenvolvedores independentes.\r\n\r\nNesse curso você irá conhecer os principais conceitos para a criação da arte pixelada, e quando falamos em arte, a prática é fundamental, e com este curso você terá isso, aulas que mostram na prática diversos tipos de Pixel Art.\r\n\r\nSe você é novo nessa área e quer você mesmo criar as artes para seus jogos indie, ou se você já trabalha com arte 2D mas ainda não se aventurou na arte pixelada, então este curso é para você.\r\n\r\nE para garantir que você terá um curso bem detalhado e com vários exemplos sendo mostrados passo a passo, um bônus com dois estilos de projetos de game em Pixel Art serão adicionados ao curso mostrando a montagem dessas cenas na game engine que mais cresce atualmente que é a Unity.",
+      "image": "2d0a3a1b-e6dd-4aea-9f86-36440712ee9d-1088438_4b11_6.jpg",
+      "create_at": "2022-08-10T17:06:09.630Z",
+      "modified_at": "2022-08-10T17:06:09.630Z",
+      "tags": [2]
+    }
+  },
+  {
+    "model": "course_api.course",
+    "pk": "7d4a8c91-e90c-40be-992d-539e375a8020",
+    "fields": {
+      "title": "AWS Serverless com NodeJS e AWS CDK",
+      "description": "Crie aplicações serverless em TypeScript na AWS com AWS Lambda, DynamoDB, SNS, SQS, S3, EventBridge e API Gateway.",
+      "image": "7d4a8c91-e90c-40be-992d-539e375a8020-4243494_f9e0_8.jpg",
+      "create_at": "2022-08-10T17:01:27.609Z",
+      "modified_at": "2022-08-10T17:01:27.609Z",
+      "tags": [1, 6, 2]
+    }
+  },
+  {
+    "model": "course_api.course",
+    "pk": "7fdb8b3b-319a-4da4-8e0c-68f7cb11b0f1",
+    "fields": {
+      "title": "Curso React + Redux: Fundamentos e 2 Apps do Absoluto ZERO!",
+      "description": "Aprenda React Js, Redux, Webpack, Redux-Form, MongoDB, Express, Node e Vários exercícios práticos e Duas Apps do ZERO!",
+      "image": "7fdb8b3b-319a-4da4-8e0c-68f7cb11b0f1-redux_react.jpg",
+      "create_at": "2022-08-10T16:44:08.158Z",
+      "modified_at": "2022-08-10T16:44:08.158Z",
+      "tags": [1, 6, 2]
+    }
+  },
+  {
+    "model": "course_api.course",
+    "pk": "a19d5e35-683d-41fc-81e0-7cf5d414d5dd",
+    "fields": {
+      "title": "Curso Preparatório Certificação AAI",
+      "description": "Este curso preparatório para a prova de certificação de Agente Autônomo de Investimentos (AAI) conta com mais de 22 horas de videoaulas e resolução de mais de 367 questões sobre os temas mais comuns desta prova realizada pela ANCORD. O curso foi elaborado e ministrado pelo Prof Dr. Juliano Vianello, que é Doutor em Finanças, possui diversas certificações financeiras nacionais e internacionais, é engenheiro pelo IME, possui mais de 12 anos de experiência prática no mercado financeiro e foi professor de várias universidades de renome do Brasil. Utiliza-se neste curso uma metodologia própria que fez com que ele fosse aprovado em mais de 10 das provas mais difíceis do Brasil e ajudou centenas de alunos a conquistarem seus objetivos.",
+      "image": "a19d5e35-683d-41fc-81e0-7cf5d414d5dd-4724824_bda9.jpg",
+      "create_at": "2022-08-10T16:49:18.966Z",
+      "modified_at": "2022-08-10T16:49:31.089Z",
+      "tags": [5, 4]
+    }
+  },
+  {
+    "model": "course_api.course",
+    "pk": "c68acbb1-9d8a-433b-a4f4-c2f53b7af2a8",
+    "fields": {
+      "title": "Yellow Belt Lean Seis Sigma com Reconhecimento Internacional",
+      "description": "Formação de Yellow Belt Lean Seis Sigma com reconhecimento internacional pela The Council For Six Sigma",
+      "image": "c68acbb1-9d8a-433b-a4f4-c2f53b7af2a8-2234758_564a_2.jpg",
+      "create_at": "2022-08-10T17:03:02.249Z",
+      "modified_at": "2022-08-10T17:03:02.249Z",
+      "tags": [4, 8]
+    }
+  },
+  {
+    "model": "course_api.course",
+    "pk": "f77a0931-20eb-4959-905b-a09f8c8f654c",
+    "fields": {
+      "title": "Fast MBA - Empreendedorismo, Negócios e Startups na Prática",
+      "description": "Aprenda tudo sobre negócios para criar, alavancar e gerenciar empresas como um(a) verdadeiro(a) CEO.",
+      "image": "f77a0931-20eb-4959-905b-a09f8c8f654c-731434_00cd_4.jpg",
+      "create_at": "2022-08-10T16:47:36.999Z",
+      "modified_at": "2022-08-10T16:48:10.615Z",
+      "tags": [4, 8]
+    }
+  }
+]

@@ -2,11 +2,11 @@ import React from "react";
 
 import Default from "../templates/Default";
 import Course from "../organisms/Course";
-import CursoPagination from "../organisms/CoursePagination";
+import CoursePagination from "../organisms/CoursePagination";
 
 import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
 
-async function getCursos(description) {
+async function getCourses(description) {
   return fetch(`http://localhost:8000/course/?description=${description}`)
     .then((data) => data.json())
     .catch({
@@ -20,12 +20,12 @@ export default function Courses() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setCourses(await getCursos(description));
+    setCourses(await getCourses(description));
   };
 
   React.useEffect(() => {
     const fetchData = async () => {
-      setCourses(await getCursos(""));
+      setCourses(await getCourses(""));
     };
     fetchData().catch(console.error);
   }, []);
@@ -56,7 +56,7 @@ export default function Courses() {
           })}
         </Row>
       </Row>
-      <CursoPagination />
+      <CoursePagination />
     </Default>
   );
 }
