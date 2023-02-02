@@ -1,3 +1,5 @@
+import React, { useContext } from "react";
+
 import { Col, Nav } from "react-bootstrap";
 
 import UserOption from "../molecules/UserOption";
@@ -9,7 +11,10 @@ import { Link } from "react-router-dom";
 
 import "../../styles/menu.css";
 
+import AuthContext from "../../context/AuthContext";
+
 export default function Menu() {
+  const { user } = useContext(AuthContext);
   return (
     <Col
       xs={12}
@@ -57,8 +62,7 @@ export default function Menu() {
             </Nav.Link>
           </Nav.Item>
         </Nav>
-        <UserOption />
-        <EnterLogin />
+        {user ? <UserOption /> : <EnterLogin />}
       </div>
     </Col>
   );
