@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 
-export const baseURL = "https://marcustera.pythonanywhere.com";
+export const baseURL = `${process.env.REACT_APP_BASE_URL_API}`;
 
 const useAxios = () => {
   const { authTokens, setUser, setAuthTokens } = useContext(AuthContext);

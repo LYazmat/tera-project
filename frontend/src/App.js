@@ -12,11 +12,12 @@ import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <AuthProvider>
         <Routes>
           {/* Courses routes */}
           <Route path="/course" element={<Courses />} />
+          <Route path="/" element={<Navigate to="/course" />} />
           <Route path="/course/:id" element={<CourseDetail />} />
 
           {/* Profile and Configs routes */}
@@ -29,9 +30,6 @@ function App() {
           {/* Auth auth route */}
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-
-          {/* Any other route */}
-          <Route path="*" element={<Navigate to="/course" />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

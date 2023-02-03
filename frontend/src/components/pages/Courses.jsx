@@ -9,7 +9,6 @@ import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
 import { baseURL } from "../../utils/useAxios";
 
 async function getCourses(description) {
-  console.log(`${baseURL}/course/?description=${description}`);
   return fetch(`${baseURL}/course/?description=${description}`)
     .then((data) => data.json())
     .catch({
