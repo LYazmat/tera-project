@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, HashRouter } from "react-router-dom";
 
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
@@ -12,7 +12,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter>
       <AuthProvider>
         <Routes>
           {/* Courses routes */}
@@ -32,7 +32,7 @@ function App() {
           <Route path="/login" element={<Login />} />
         </Routes>
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
