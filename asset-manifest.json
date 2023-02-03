@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/tera-project/static/css/main.f387b124.css",
-    "main.js": "/tera-project/static/js/main.fe1d5fec.js",
+    "main.js": "/tera-project/static/js/main.5221f948.js",
     "index.html": "/tera-project/index.html",
     "main.f387b124.css.map": "/tera-project/static/css/main.f387b124.css.map",
-    "main.fe1d5fec.js.map": "/tera-project/static/js/main.fe1d5fec.js.map"
+    "main.5221f948.js.map": "/tera-project/static/js/main.5221f948.js.map"
   },
   "entrypoints": [
     "static/css/main.f387b124.css",
-    "static/js/main.fe1d5fec.js"
+    "static/js/main.5221f948.js"
   ]
 }
