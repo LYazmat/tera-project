@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Default from "../templates/Default";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import {
   Row,
   Col,
@@ -11,17 +11,10 @@ import {
   Alert,
 } from "react-bootstrap";
 
-async function register(credentials) {
-  return fetch("http://localhost:8000/auth/register/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  }).then((data) => data.json());
-}
+import AuthContext from "../../context/AuthContext";
 
 export default function Register() {
+  const { registerUser } = useContext(AuthContext);
   const [alert, setAlert] = useState(false);
 
   const handleChange = (event) => {
@@ -31,24 +24,20 @@ export default function Register() {
   };
 
   const [credentials, setCredentials] = useState({
-    username: "",
     email: "",
+    username: "",
     password: "",
     password2: "",
   });
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (credentials.password === credentials.password2) {
-      const token = await register(credentials);
-      console.log(token);
-      !!token?.token && navigate("/profile");
-    } else {
-      setAlert(<Alert variant="danger">Deu ruim!</Alert>);
-    }
+    credentials.password === credentials.password2
+      ? registerUser(credentials)
+      : setAlert(<Alert variant="danger">Passwords não conferem!</Alert>);
   };
 
   return (

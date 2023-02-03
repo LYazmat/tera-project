@@ -5,7 +5,7 @@ import { Col, Nav } from "react-bootstrap";
 import UserOption from "../molecules/UserOption";
 import EnterLogin from "../molecules/EnterLogin";
 
-import { BsFillStarFill } from "react-icons/bs";
+import { BsFillHeartFill } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
 
@@ -51,7 +51,7 @@ export default function Menu() {
           </Nav.Item>
           <Nav.Item>
             <Nav.Link to="#" className="px-sm-0 px-2">
-              <BsFillStarFill className="text-warning fs-5 me-2" />
+              <BsFillHeartFill className="text-danger fs-5 me-2" />
               <span className="ms-1 d-none d-sm-inline">Favoritos</span>
             </Nav.Link>
           </Nav.Item>

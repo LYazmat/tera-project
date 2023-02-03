@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 
 import { Col, Card, Button } from "react-bootstrap";
 import TagCourse from "../atoms/TagCourse";
+import HeartButton from "../atoms/HeartButton";
 
 export default function Course({ course }) {
   return (
     <Col xs={12} md={6} lg={4} xl={3} className="pt-4">
       <Card className="h-100">
         <img src={course.image} className="card-img-top" alt="..." />
+        <HeartButton />
         <Card.Body>
           <Button
             to={`/course/${course.id}`}
