@@ -8,7 +8,7 @@ import "../../styles/userOption.css";
 import AuthContext from "../../context/AuthContext";
 
 export default function UserOption() {
-  const { logoutUser } = useContext(AuthContext);
+  const { logoutUser, user } = useContext(AuthContext);
   return (
     <Dropdown
       className="py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1 w-100"
@@ -21,7 +21,7 @@ export default function UserOption() {
         className="d-flex align-items-center text-white text-decoration-none m-0 w-100"
       >
         <Avatar width="28" height="28" className="rounded-circle me-2" />
-        <span className="d-none d-sm-inline mx-1 ms-2">Usuário</span>
+        <span className="d-none d-sm-inline mx-1 ms-2">{user.username}</span>
         <div id="div-menu-toogle-sep" className="text-end w-100"></div>
       </Dropdown.Toggle>
 

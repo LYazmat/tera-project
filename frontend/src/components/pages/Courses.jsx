@@ -6,8 +6,11 @@ import CoursePagination from "../organisms/CoursePagination";
 
 import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
 
+import { baseURL } from "../../utils/useAxios";
+
 async function getCourses(description) {
-  return fetch(`http://localhost:8000/course/?description=${description}`)
+  console.log(`${baseURL}/course/?description=${description}`);
+  return fetch(`${baseURL}/course/?description=${description}`)
     .then((data) => data.json())
     .catch({
       msg: "Não foi possível realizar a busca.",

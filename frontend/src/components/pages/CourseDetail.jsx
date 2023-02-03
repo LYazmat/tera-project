@@ -8,10 +8,10 @@ import { Row, Col, Card, Button, Accordion } from "react-bootstrap";
 import blank from "../assets/blank.png";
 import "../../styles/cursoapresentacao.css";
 
+import { baseURL } from "../../utils/useAxios";
+
 async function getCurso(id) {
-  return fetch(`http://localhost:8000/course/${id}`).then((data) =>
-    data.json()
-  );
+  return fetch(`${baseURL}/course/${id}`).then((data) => data.json());
 }
 
 /** 
