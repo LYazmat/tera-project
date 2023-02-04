@@ -1,5 +1,6 @@
 from django.db import models
 from uuid import uuid4
+from django.contrib.auth.models import User
 
 
 def upload_image_curso(instance, filename):
@@ -33,3 +34,27 @@ class Course(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Favorite(models.Model):
+    course = models.ForeignKey(to=Course, on_delete=models.PROTECT)
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    create_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Favorite course {self.course.title} for {self.user.username} at {self.create_at}'
+
+    class Meta:
+        unique_together = ['course', 'user']
+
+
+class Enroll(models.Model):
+    course = models.ForeignKey(to=Course, on_delete=models.PROTECT)
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    create_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Enrrol course {self.course.title} for {self.user.username} at {self.create_at}'
+
+    class Meta:
+        unique_together = ['course', 'user']
