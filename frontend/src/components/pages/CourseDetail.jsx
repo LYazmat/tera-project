@@ -11,21 +11,10 @@ import "../../styles/cursoapresentacao.css";
 import { baseURL } from "../../utils/useAxios";
 
 async function getCurso(id) {
-  return fetch(`${baseURL}/course/${id}`).then((data) => data.json());
+  return fetch(`${baseURL}/course/course/${id}`).then((data) => data.json());
 }
 
-/** 
-$.get(`https://marcustera.pythonanywhere.com/curso/${id}`, function (data) {
-  console.log(JSON.stringify(data));
-  $("#data-image").attr("src", data.image);
-  $("#data-title").html(data.title);
-  $("#data-description").html(
-    `<span style="white-space: pre-wrap;">${data.description}</span>`
-  );
-});
-*/
-
-export default function CourseDetail(props) {
+export default function CourseDetail() {
   const { id } = useParams();
   const [curso, setCurso] = React.useState();
 

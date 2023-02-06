@@ -12,7 +12,8 @@ class CourseSerializer(serializers.ModelSerializer):
 
     # tags = TagSerializer(read_only=True, many=True)
     tags_obj = TagSerializer(source='tags', read_only=True, many=True)
-    is_favorite = serializers.IntegerField()
+    favorited = serializers.IntegerField()
+    enrolled = serializers.IntegerField()
 
     class Meta:
         model = Course

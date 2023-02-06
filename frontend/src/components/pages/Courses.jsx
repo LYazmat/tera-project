@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import Default from "../templates/Default";
 import Course from "../organisms/Course";
@@ -6,30 +6,38 @@ import CoursePagination from "../organisms/CoursePagination";
 
 import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
 
-import { baseURL } from "../../utils/useAxios";
+import { useAxios } from "../../utils/useAxios";
 
-async function getCourses(description) {
-  return fetch(`${baseURL}/course/?description=${description}`)
-    .then((data) => data.json())
-    .catch({
-      msg: "Não foi possível realizar a busca.",
-    });
-}
+import AuthContext from "../../context/AuthContext";
 
 export default function Courses() {
   const [description, setDescription] = React.useState("");
   const [courses, setCourses] = React.useState([]);
 
+  const { user } = useContext(AuthContext);
+
+  // Inform to useAxios if authentication is needed
+  const api = useAxios(!!user);
+
+  const fetchData = async () => {
+    try {
+      const response = await api.get(
+        `/course/course/?description=${description}`
+      );
+      if (response.status === 200) setCourses(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setCourses(await getCourses(description));
+    fetchData();
   };
 
   React.useEffect(() => {
-    const fetchData = async () => {
-      setCourses(await getCourses(""));
-    };
-    fetchData().catch(console.error);
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

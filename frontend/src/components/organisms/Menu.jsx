@@ -43,24 +43,28 @@ export default function Menu() {
               <span className="ms-1 d-none d-sm-inline">Cursos</span>
             </Nav.Link>
           </Nav.Item>
-          <Nav.Item>
-            <Nav.Link to="#" className="px-sm-0 px-2">
-              <i className="text-primary fs-5 bi bi-mortarboard-fill me-2"></i>
-              <span className="ms-1 d-none d-sm-inline">Meus Cursos</span>
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link to="#" className="px-sm-0 px-2">
-              <BsFillHeartFill className="text-danger fs-5 me-2" />
-              <span className="ms-1 d-none d-sm-inline">Favoritos</span>
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link to="#" className="px-sm-0 px-2">
-              <i className="text-success fs-5 bi bi-chat-dots-fill me-2"></i>
-              <span className="ms-1 d-none d-sm-inline">Mensagens</span>
-            </Nav.Link>
-          </Nav.Item>
+          {user && (
+            <React.Fragment>
+              <Nav.Item>
+                <Nav.Link to="#" className="px-sm-0 px-2">
+                  <i className="text-primary fs-5 bi bi-mortarboard-fill me-2"></i>
+                  <span className="ms-1 d-none d-sm-inline">Meus Cursos</span>
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link to="#" className="px-sm-0 px-2">
+                  <BsFillHeartFill className="text-danger fs-5 me-2" />
+                  <span className="ms-1 d-none d-sm-inline">Favoritos</span>
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link to="#" className="px-sm-0 px-2">
+                  <i className="text-success fs-5 bi bi-chat-dots-fill me-2"></i>
+                  <span className="ms-1 d-none d-sm-inline">Mensagens</span>
+                </Nav.Link>
+              </Nav.Item>
+            </React.Fragment>
+          )}
         </Nav>
         {user ? <UserOption /> : <EnterLogin />}
       </div>
