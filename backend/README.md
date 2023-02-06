@@ -1,52 +1,36 @@
-## Backend Inital Configs - Django [![django](https://img.shields.io/badge/Django-FFFFFF?style=flat&logo=django&logoColor=green)](https://www.djangoproject.com)
+## Backend Initial Config - Django [![django](https://img.shields.io/badge/Django-FFFFFF?style=flat&logo=django&logoColor=green)](https://www.djangoproject.com)
 
-- Go to folder backend
+Go to folder backend
 
-```console
-cd backend
-```
+### `cd backend`
 
-- Install the dependences
+Install the dependences
 
-```console
-pip install -r requirements.txt
-```
+### `pip install -r requirements.txt`
 
-- Run migrations
+Run migrations
 
-```console
-python manage.py migrate
-```
+### `python manage.py migrate`
 
-- Run backend server (default port is :8000)
+Run backend server (default port is :8000)
 
-```console
-python manage.py runserver
-```
+`### python manage.py runserver`
 
-- Create an admin user
+Create an admin user
 
-```console
-python manage.py createsuperuser
-```
+### `python manage.py createsuperuser`
 
-- To include inital data from fixtures (basically register some courses)
+To include inital data from fixtures (basically register some courses)
 
-```console
-python manage.py loaddata fixtures/course_api.json
-```
+### `python manage.py loaddata fixtures/course_api.json`
 
-- Admin page
+Admin page
 
-```
-http://localhost:8000/admin
-```
+### `http://localhost:8000/admin`
 
-- List of API endpoints
+List of API endpoints
 
-```
-http://localhost:8000/docs/
-```
+### `http://localhost:8000/docs/`
 
 <div align="center">
 
