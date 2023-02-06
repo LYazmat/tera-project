@@ -52,7 +52,7 @@ export default function Menu() {
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link to="#" className="px-sm-0 px-2">
+                <Nav.Link as={Link} to="/favorite/" className="px-sm-0 px-2">
                   <BsFillHeartFill className="text-danger fs-5 me-2" />
                   <span className="ms-1 d-none d-sm-inline">Favoritos</span>
                 </Nav.Link>

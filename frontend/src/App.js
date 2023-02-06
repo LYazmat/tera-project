@@ -6,6 +6,7 @@ import Profile from "./components/pages/Profile";
 import Configs from "./components/pages/Configs";
 import Courses from "./components/pages/Courses";
 import CourseDetail from "./components/pages/CourseDetail";
+import Favorites from "./components/pages/Favorites";
 
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./utils/PrivateRoute";
@@ -19,6 +20,10 @@ function App() {
           <Route path="/course" element={<Courses />} />
           <Route path="/" element={<Navigate to="/course" />} />
           <Route path="/course/:id" element={<CourseDetail />} />
+          <Route
+            path="/favorite"
+            element={<PrivateRoute Component={Favorites} />}
+          />
 
           {/* Profile and Configs routes */}
           <Route

@@ -2,22 +2,23 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 
 from django.db import models
+from django.db.models import Q
 
-from rest_framework import status
 from rest_framework import viewsets, mixins
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes, action
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated, IsAuthenticatedOrReadOnly
 
 from .serializers import CourseSerializer, FavoriteSerializer, EnrollSerializer
 from .models import Course, Favorite, Enroll
-from django.db.models import Q, Count, F
+
+from drf_spectacular.utils import extend_schema, extend_schema_view, OpenApiParameter
 
 from functools import reduce
 
-'''    
-    viewsets.ModelViewSet = mixins.CreateModelMixin, 
-                            mixins.RetrieveModelMixin, 
+'''
+    viewsets.ModelViewSet = mixins.CreateModelMixin,
+                            mixins.RetrieveModelMixin,
                             mixins.UpdateModelMixin,
                             mixins.DestroyModelMixin,
                             mixins.ListModelMixin,
@@ -28,12 +29,11 @@ from functools import reduce
 class CourseViewSet(viewsets.ModelViewSet):
 
     serializer_class = CourseSerializer
-    permission_classes = (AllowAny,)
-    http_method_names = ['get', 'head']
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
         '''
-        Need override get_queryset for purposes bellow
+        Overriding get_queryset for purposes bellow
         1. Need to include user from request
         2. Need to include favorite and enroll
         3. Need to filter using description param
@@ -69,13 +69,65 @@ class CourseViewSet(viewsets.ModelViewSet):
 
         return queryset
 
+    @extend_schema(
+        parameters=[
+            OpenApiParameter(
+                name='description', description='Filter by course title (partial)', required=False, type=str)
+        ])
+    def list(self, request):
+        return super().list(request)
+
+    @extend_schema(
+        parameters=[
+            OpenApiParameter(
+                name='description', description='Filter by course title (partial)', required=False, type=str),
+        ])
     @action(detail=False, methods=['get'])
     def favorite(self, request):
-        self.queryset = queryset.filter(favorite__user=request.user.id)
-        super().list(request, *ags, **kwargs)
-        return Response({'msg': 'ok'}, status=status.HTTP_200_OK)
+        '''
+        ViewSet function for favorite page list.
+        Access at <url_base_course_route>/favorite/ .
+        Changing queryset to get only courses favorited by request user.
+        '''
+        queryset = self.get_queryset()
+        queryset = queryset.filter(
+            favorite__user=request.user.id, favorite__user__isnull=False)
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
+    @extend_schema(
+        parameters=[
+            OpenApiParameter(
+                name='description', description='Filter by course title (partial)', required=False, type=str),
+        ])
+    @action(detail=False, methods=['get'])
+    def enroll(self, request):
+        '''
+        ViewSet for enroll page list.
+        Access at <url_base_course_route>/enroll/ .
+        Changing queryset to get only courses enrolled by request user.
+        '''
+        queryset = self.get_queryset()
+        queryset = queryset.filter(
+            enroll__user=request.user.id, enroll__user__isnull=False)
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
 
 
+@extend_schema_view(
+    retrieve=extend_schema(
+        parameters=[
+            OpenApiParameter(
+                name='id', location=OpenApiParameter.PATH, type=int)
+        ]
+    ),
+    destroy=extend_schema(
+        parameters=[
+            OpenApiParameter(
+                name='id', location=OpenApiParameter.PATH, type=int)
+        ]
+    ),
+)
 @permission_classes([IsAuthenticated])
 class FavoriteViewSet(viewsets.ModelViewSet):
     serializer_class = FavoriteSerializer
@@ -86,6 +138,20 @@ class FavoriteViewSet(viewsets.ModelViewSet):
         return Favorite.objects.filter(user=self.request.user)
 
 
+@extend_schema_view(
+    retrieve=extend_schema(
+        parameters=[
+            OpenApiParameter(
+                name='id', location=OpenApiParameter.PATH, type=int)
+        ]
+    ),
+    destroy=extend_schema(
+        parameters=[
+            OpenApiParameter(
+                name='id', location=OpenApiParameter.PATH, type=int)
+        ]
+    ),
+)
 class EnrollViewSet(viewsets.ModelViewSet):
     serializer_class = EnrollSerializer
     permission_classes = (IsAuthenticated,)

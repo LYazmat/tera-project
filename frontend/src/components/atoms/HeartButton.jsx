@@ -6,7 +6,7 @@ import AuthContext from "../../context/AuthContext";
 
 import { useAxios } from "../../utils/useAxios";
 
-export default function HeartButton({ id, course }) {
+export default function HeartButton({ id, course, handleDisplay }) {
   const [active, setActive] = useState(!!id);
   const [favorite, setFavorite] = useState(id);
 
@@ -43,6 +43,7 @@ export default function HeartButton({ id, course }) {
           if (response.status === 204) {
             setFavorite(null);
             setActive(!active);
+            handleDisplay();
           }
         })
         .catch(function (error) {
