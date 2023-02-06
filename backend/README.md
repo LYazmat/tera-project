@@ -48,7 +48,7 @@ http://localhost:8000/admin
 http://localhost:8000/docs/
 ```
 
-<div style='text-align: center;'>
+<div align="center">
 
 You can see all documentation about Django and Django Rest Framework bellow:
 
