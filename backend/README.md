@@ -24,7 +24,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-- Create a admin user
+- Create an admin user
 
 ```console
 python manage.py createsuperuser
@@ -38,13 +38,13 @@ python manage.py loaddata fixtures/course_api.json
 
 - Admin page
 
-```http
+```
 http://localhost:8000/admin
 ```
 
 - List of API endpoints
 
-```http
+```
 http://localhost:8000/docs/
 ```
 
