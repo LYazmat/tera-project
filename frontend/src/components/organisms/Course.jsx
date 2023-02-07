@@ -14,23 +14,23 @@ export default function Course({ course, unmount }) {
     display && (
       <Col xs={12} md={6} lg={4} xl={3} className="pt-4">
         <Card className="h-100">
-          <img src={course.image} className="card-img-top" alt="..." />
+          <img src={course?.image} className="card-img-top" alt="..." />
           <HeartButton
-            id={course.favorited}
-            course={course.id}
+            id={course?.favorited}
+            course={course?.id}
             handleDisplay={handleDisplay}
           />
           <Card.Body>
             <Button
-              to={`/course/${course.id}`}
+              to={`/course/${course?.id}`}
               as={Link}
-              variant="warning"
+              variant={!!course?.enrolled ? "dark" : "warning"}
               className="fw-bold form-control mb-3"
             >
-              MATRICULE-SE
+              {!!course?.enrolled ? "ACESSE" : "MATRICULE-SE"}
             </Button>
             <Card.Title>
-              <h5 className="text-center">{course.title}</h5>
+              <h5 className="text-center">{course?.title}</h5>
             </Card.Title>
             <div className="text-center mx-auto" style={{ maxWidth: "80%" }}>
               {course.tags_obj.map((tag, i) => {

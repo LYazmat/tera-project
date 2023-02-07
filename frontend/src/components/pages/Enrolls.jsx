@@ -10,18 +10,18 @@ import { useAxios } from "../../utils/useAxios";
 
 import AuthContext from "../../context/AuthContext";
 
-export default function Courses() {
+export default function Enrolls() {
   const [description, setDescription] = React.useState("");
   const [courses, setCourses] = React.useState([]);
 
   const { user } = useContext(AuthContext);
 
-  // Inform to useAxios if authentication is needed
+  // Inform to "useAxios()' if authentication is needed
   const api = useAxios(!!user);
 
   const fetchData = async () => {
     await api
-      .get(`/course/course/?description=${description}`)
+      .get(`/course/course/enroll/?description=${description}`)
       .then(function (response) {
         if (response.status === 200) setCourses(response.data);
       })
@@ -61,7 +61,7 @@ export default function Courses() {
           </Form>
         </Col>
         <Row id="content" className="overflow-auto mx-auto">
-          {courses?.map((course, i) => {
+          {courses.map((course, i) => {
             return <Course key={course.id} course={course} />;
           })}
         </Row>

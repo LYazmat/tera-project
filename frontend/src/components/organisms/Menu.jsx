@@ -46,7 +46,7 @@ export default function Menu() {
           {user && (
             <React.Fragment>
               <Nav.Item>
-                <Nav.Link to="#" className="px-sm-0 px-2">
+                <Nav.Link as={Link} to="/enroll/" className="px-sm-0 px-2">
                   <i className="text-primary fs-5 bi bi-mortarboard-fill me-2"></i>
                   <span className="ms-1 d-none d-sm-inline">Meus Cursos</span>
                 </Nav.Link>

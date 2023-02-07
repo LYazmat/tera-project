@@ -7,6 +7,7 @@ import Configs from "./components/pages/Configs";
 import Courses from "./components/pages/Courses";
 import CourseDetail from "./components/pages/CourseDetail";
 import Favorites from "./components/pages/Favorites";
+import Enrolls from "./components/pages/Enrolls";
 
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./utils/PrivateRoute";
@@ -23,6 +24,10 @@ function App() {
           <Route
             path="/favorite"
             element={<PrivateRoute Component={Favorites} />}
+          />
+          <Route
+            path="/enroll"
+            element={<PrivateRoute Component={Enrolls} />}
           />
 
           {/* Profile and Configs routes */}

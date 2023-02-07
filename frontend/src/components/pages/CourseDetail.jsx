@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+
+import { useParams, useNavigate } from "react-router-dom";
 
 import Default from "../templates/Default";
 
@@ -8,22 +9,72 @@ import { Row, Col, Card, Button, Accordion } from "react-bootstrap";
 import blank from "../assets/blank.png";
 import "../../styles/cursoapresentacao.css";
 
-import { baseURL } from "../../utils/useAxios";
+import { useAxios } from "../../utils/useAxios";
 
-async function getCurso(id) {
-  return fetch(`${baseURL}/course/course/${id}`).then((data) => data.json());
-}
+import AuthContext from "../../context/AuthContext";
 
 export default function CourseDetail() {
   const { id } = useParams();
-  const [curso, setCurso] = React.useState();
+  const [course, setCourse] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
+
+  const { user } = React.useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const api = useAxios(!!user);
+
+  const fetchData = async () => {
+    await api
+      .get(`/course/course/${id}/`)
+      .then(function (response) {
+        if (response.status === 200) setCourse(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   React.useEffect(() => {
-    const handleCurso = async () => {
-      setCurso(await getCurso(id));
-    };
-    handleCurso();
-  }, [id]);
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const enrollCourse = async () => {
+    // If user context not found => navigate to login page and don't call the API
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+
+    if (!!course?.enrolled) return;
+
+    // Do not call API if a request is still on going
+    if (loading) return;
+
+    setLoading(true);
+
+    /**
+     * Post request needs course and user id, returns status 201 - created
+     * Delete request needs enroll id, returns status 204 - no content
+     **/
+
+    await api
+      .post("/course/enroll/", {
+        user: user.user_id,
+        course: course?.id,
+      })
+      .then(function (response) {
+        if (response.status === 201) {
+          fetchData();
+          navigate("/enroll");
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    setLoading(false);
+  };
 
   return (
     <Default my={false}>
@@ -33,22 +84,25 @@ export default function CourseDetail() {
             <Col xs={12} md={8} className="text-center mt-4">
               <img
                 id="data-image"
-                src={curso?.image || blank}
+                src={course?.image || blank}
                 className="img-fluid rounded-start w-100"
                 alt="..."
               />
               <Card.Body>
                 <Button
                   variant="dark"
-                  as={Link}
-                  to="/#"
+                  onClick={enrollCourse}
                   className="fw-bold form-control mb-3"
                 >
-                  <h4 as={Card.Title}>{curso?.title}</h4>
-                  <h4 className="text-warning">MATRICULE-SE AGORA!</h4>
+                  <h4 as={Card.Title}>{course?.title}</h4>
+                  {!course?.enrolled ? (
+                    <h4 className="text-warning">MATRICULE-SE AGORA!</h4>
+                  ) : (
+                    <h4 className="text-info">ASSISTA AGORA!</h4>
+                  )}
                 </Button>
                 <Card.Text className="text-justify">
-                  {curso?.description}
+                  {course?.description}
                 </Card.Text>
               </Card.Body>
             </Col>

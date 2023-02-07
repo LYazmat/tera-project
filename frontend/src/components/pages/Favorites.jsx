@@ -17,17 +17,17 @@ export default function Favorites() {
   const { user } = useContext(AuthContext);
 
   // Inform to "useAxios()' if authentication is needed
-  const api = useAxios(true);
+  const api = useAxios(!!user);
 
   const fetchData = async () => {
-    try {
-      const response = await api.get(
-        `/course/course/favorite/?description=${description}`
-      );
-      if (response.status === 200) setCourses(response.data);
-    } catch (error) {
-      console.error(error);
-    }
+    await api
+      .get(`/course/course/favorite/?description=${description}`)
+      .then(function (response) {
+        if (response.status === 200) setCourses(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   const handleSubmit = async (e) => {
