@@ -35,9 +35,10 @@ function App() {
             path="/profile"
             element={<PrivateRoute Component={Profile} />}
           />
-          <Route path="/config" element={<Configs />} />
+          <Route path="/config" 
+            element={<PrivateRoute Component={Configs} />}/>
 
-          {/* Auth auth route */}
+          {/* Register and auth routes */}
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
         </Routes>

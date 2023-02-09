@@ -2,7 +2,7 @@ import React from "react";
 import Default from "../templates/Default";
 import DefaultModal from "../organisms/DefaultModal";
 
-import "../../styles/configuracoes.css";
+import "../../styles/configs.css";
 
 import {
   Container,

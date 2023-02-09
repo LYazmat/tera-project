@@ -7,7 +7,7 @@ import Default from "../templates/Default";
 import { Row, Col, Card, Button, Accordion } from "react-bootstrap";
 
 import blank from "../assets/blank.png";
-import "../../styles/cursoapresentacao.css";
+import "../../styles/coursedetail.css";
 
 import { useAxios } from "../../utils/useAxios";
 
