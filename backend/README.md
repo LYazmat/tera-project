@@ -14,7 +14,7 @@ Run migrations
 
 Run backend server (default port is :8000)
 
-`### python manage.py runserver`
+### `python manage.py runserver`
 
 Create an admin user
 
