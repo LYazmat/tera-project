@@ -1,5 +1,5 @@
 ## Tera Project - Fullstack Developer
-
+https://lyazmat.github.io/tera-project/
 <br/>
 
 ![django](https://img.shields.io/badge/Django-FFFFFF?style=flat&logo=django&logoColor=green)
